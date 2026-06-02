@@ -18,7 +18,7 @@ const departmentChoices = [
 ];
 
 export const EmployeeCreate = () => (
-  <Create title="New Employee">
+  <Create title="New Employee" redirect="list">
     <SimpleForm>
       <TextInput
         source="firstname"
