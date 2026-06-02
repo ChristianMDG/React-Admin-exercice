@@ -18,22 +18,22 @@ const choices = [
 const employeeFilters = [
   <SearchInput key="q" source="q" alwaysOn />,
   <SelectInput key="department" source="department" choices={choices} />,
-  <TextInput key="firstname" source="firstname" />,
-  <TextInput key="lastname" source="lastname" />,
+  <TextInput key="firstname" source="firstname" label="First Name" />,
+  <TextInput key="lastname" source="lastname" label="Last Name" />,
 ];
 export const EmployeeList = () => (
-  <List filters={employeeFilters}>
+  <List filters={employeeFilters} perPage={5} title="List of Employees">
     <Datagrid rowClick="edit">
-      <TextField source="firstname" label="Prénom / Nom" />
-      <TextField source="lastname" />
+      <TextField source="firstname" label="First Name" />
+      <TextField source="lastname" label="Last Name" />
       <TextField source="email" label="Email" />
-      <TextField source="department" label="Département" />
+      <TextField source="department" label="Department" />
       <NumberField
         source="salary"
-        label="Salaire"
+        label="Salary"
         options={{ style: "currency", currency: "EUR" }}
       />
-      <BooleanField source="active" label="Actif" />
+      <BooleanField source="active" label="Active" />
     </Datagrid>
   </List>
 );

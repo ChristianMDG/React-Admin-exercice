@@ -1,5 +1,5 @@
 import {
-  Create,
+  Edit,
   SimpleForm,
   TextInput,
   NumberInput,
@@ -8,6 +8,7 @@ import {
   required,
   minValue,
   email,
+  useRecordContext,
 } from "react-admin";
 
 const departmentChoices = [
@@ -17,8 +18,18 @@ const departmentChoices = [
   { id: "Finance", name: "Finance" },
 ];
 
-export const EmployeeCreate = () => (
-  <Create title="New Employee" redirect="list">
+const EmployeeTitle = () => {
+  const record = useRecordContext();
+  if (!record) return <span>Modifier un employé</span>;
+  return (
+    <span>
+      Modify : {record.firstname} {record.lastname}
+    </span>
+  );
+};
+
+export const EmployeeEdit = () => (
+  <Edit title={<EmployeeTitle />}>
     <SimpleForm>
       <TextInput
         source="firstname"
@@ -40,7 +51,7 @@ export const EmployeeCreate = () => (
       />
       <SelectInput
         source="department"
-        label="Department"
+        label="DDepartment"
         choices={departmentChoices}
         validate={required("The department is required")}
       />
@@ -49,10 +60,10 @@ export const EmployeeCreate = () => (
         label="Salary (€)"
         validate={[
           required("The salary is required"),
-          minValue(1500, "The minimum salary is 1,500 €"),
+          minValue(1500, "The minimum salary is 1 500 €"),
         ]}
       />
       <BooleanInput source="active" label="Active" />
     </SimpleForm>
-  </Create>
+  </Edit>
 );

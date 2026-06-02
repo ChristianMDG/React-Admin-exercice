@@ -29,10 +29,12 @@
     },
     {
       "firstname": "Chris",
-      "lastname": "tian",
+      "lastname": "Ravelo",
       "email": "chris@gmail.com",
-      "department": "Informatique",
-      "id": 4
+      "department": "Marketing",
+      "salary": 5000,
+      "active": true,
+      "id": 5
     }
   ]
 }
