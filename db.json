@@ -35,6 +35,74 @@
       "salary": 5000,
       "active": true,
       "id": 5
+    },
+    {
+      "active": true,
+      "firstname": "Antonio",
+      "lastname": "Kely",
+      "email": "Kelyvoniny@gmail.com",
+      "department": "Informatique",
+      "salary": 1500,
+      "id": 6
+    }
+  ],
+  "interns": [
+    {
+      "id": 1,
+      "first_name": "Alice",
+      "last_name": "Moreau",
+      "email": "alice.moreau@intern.com",
+      "department": "IT",
+      "managerId": 2,
+      "isRemunerated": true,
+      "remuneration": 1200
+    },
+    {
+      "id": 2,
+      "first_name": "Benoît",
+      "last_name": "Lefevre",
+      "email": "benoit.lefevre@intern.com",
+      "department": "R&D",
+      "managerId": 2,
+      "isRemunerated": false
+    },
+    {
+      "id": 3,
+      "first_name": "Clara",
+      "last_name": "Garcia",
+      "email": "clara.garcia@intern.com",
+      "department": "IT",
+      "managerId": 1,
+      "isRemunerated": true,
+      "remuneration": 1150
+    },
+    {
+      "id": 4,
+      "first_name": "David",
+      "last_name": "Roux",
+      "email": "david.roux@intern.com",
+      "department": "Marketing",
+      "managerId": 2,
+      "isRemunerated": true,
+      "remuneration": 1100
+    },
+    {
+      "id": 5,
+      "first_name": "Emma",
+      "last_name": "Petit",
+      "email": "emma.petit@intern.com",
+      "department": "R&D",
+      "managerId": 2,
+      "isRemunerated": false
+    },
+    {
+      "isRemunerated": true,
+      "first_name": "chris",
+      "last_name": "bogosy",
+      "email": "chris@gmail.com",
+      "department": "informatique",
+      "remuneration": 5000,
+      "id": 6
     }
   ]
 }
