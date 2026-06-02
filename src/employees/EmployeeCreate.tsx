@@ -2,29 +2,57 @@ import {
   Create,
   SimpleForm,
   TextInput,
+  NumberInput,
   SelectInput,
-  NumberField,
-  BooleanField,
+  BooleanInput,
+  required,
+  minValue,
+  email,
 } from "react-admin";
 
-const choices = [
+const departmentChoices = [
   { id: "Informatique", name: "Informatique" },
   { id: "Marketing", name: "Marketing" },
   { id: "RH", name: "RH" },
+  { id: "Finance", name: "Finance" },
 ];
+
 export const EmployeeCreate = () => (
-  <Create>
+  <Create title="New Employee">
     <SimpleForm>
-      <TextInput source="firstname" label="Prénom" />
-      <TextInput source="lastname" label="Nom" />
-      <TextInput source="email" label="Email" />
-      <SelectInput source="department" label="Département" choices={choices} />
-      <NumberField
-        source="salary"
-        label="Salaire"
-        options={{ style: "currency", currency: "EUR" }}
+      <TextInput
+        source="firstname"
+        label="First Name"
+        validate={required("The first name is required")}
       />
-      <BooleanField source="active" label="Actif" />
+      <TextInput
+        source="lastname"
+        label="Last Name"
+        validate={required("The last name is required")}
+      />
+      <TextInput
+        source="email"
+        label="Email"
+        validate={[
+          required("The email is required"),
+          email("The email is not valid"),
+        ]}
+      />
+      <SelectInput
+        source="department"
+        label="Department"
+        choices={departmentChoices}
+        validate={required("The department is required")}
+      />
+      <NumberInput
+        source="salary"
+        label="Salary (€)"
+        validate={[
+          required("The salary is required"),
+          minValue(1500, "The minimum salary is 1,500 €"),
+        ]}
+      />
+      <BooleanInput source="active" label="Active" />
     </SimpleForm>
   </Create>
 );

@@ -22,7 +22,7 @@ const employeeFilters = [
   <TextInput key="lastname" source="lastname" />,
 ];
 export const EmployeeList = () => (
-  <List filters={employeeFilters}>
+  <List filters={employeeFilters} perPage={5} title="Liste des employés">
     <Datagrid rowClick="edit">
       <TextField source="firstname" label="Prénom / Nom" />
       <TextField source="lastname" />

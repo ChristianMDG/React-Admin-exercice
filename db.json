@@ -33,6 +33,15 @@
       "email": "chris@gmail.com",
       "department": "Informatique",
       "id": 4
+    },
+    {
+      "firstname": "Chris",
+      "lastname": "Ravelo",
+      "email": "chris@gmail.com",
+      "department": "Marketing",
+      "salary": 5000,
+      "active": true,
+      "id": 5
     }
   ]
 }
