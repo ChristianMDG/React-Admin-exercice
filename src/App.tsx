@@ -1,5 +1,4 @@
 import { Admin, Resource } from "react-admin";
-import { Layout } from "./Layout";
 import { dataProvider } from "./dataProvider";
 import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeCreate } from "./employees/EmployeeCreate";
@@ -9,8 +8,9 @@ import InternList from "./interns/InternList";
 import { InternCreate } from "./interns/InternCreate";
 import { InternEdit } from "./interns/InternEdit";
 import { InternShow } from "./interns/InternShow";
+import Dashboard from "./Dashboard";
 export const App = () => (
-  <Admin layout={Layout} dataProvider={dataProvider}>
+  <Admin dashboard={Dashboard} dataProvider={dataProvider}>
     <Resource
       name="employees"
       list={EmployeeList}

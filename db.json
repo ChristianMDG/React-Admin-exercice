@@ -7,7 +7,7 @@
       "email": "alice@company.com",
       "department": "Informatique",
       "salary": "2 800 €",
-      "active": true
+      "active": false
     },
     {
       "id": 2,
@@ -25,7 +25,7 @@
       "email": "clara@company.com",
       "department": "RH",
       "salary": "2 600 €",
-      "active": false
+      "active": true
     },
     {
       "active": false,
@@ -94,6 +94,16 @@
       "department": "informatique",
       "remuneration": 5000,
       "id": 6
+    },
+    {
+      "first_name": "chris",
+      "last_name": "bogosy",
+      "email": "chris.bogosy@intern.com",
+      "department": "Informatique",
+      "managerId": 1,
+      "isRemunerated": false,
+      "remuneration": null,
+      "id": 7
     }
   ]
 }

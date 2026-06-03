@@ -12,6 +12,7 @@ import {
 } from "react-admin";
 import { useGetList } from "react-admin";
 
+
 export const InternEdit = () => {
   return (
     <Edit>

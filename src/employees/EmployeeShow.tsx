@@ -11,7 +11,7 @@ import {
 } from "react-admin";
 
 import InternsByManager from "../interns/InternsByManager";
-import DepartmentStats from "../interns/DepartmentStats";
+import DepartmentStats from "../DepartmentStats";
 
 const EmployeeShowActions = () => (
   <TopToolbar>
