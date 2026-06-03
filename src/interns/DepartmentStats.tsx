@@ -20,7 +20,7 @@ const DepartmentStats = () => {
       <Paper sx={{ mt: 2, p: 2 }}>
         <Box display="flex" alignItems="center" gap={2}>
           <CircularProgress size={20} />
-          <Typography>Chargement des statistiques...</Typography>
+          <Typography>Loading the statistics...</Typography>
         </Box>
       </Paper>
     );
@@ -37,7 +37,7 @@ const DepartmentStats = () => {
           >
             {total || 0}
           </strong>{" "}
-          collègue(s) actif(s) dans le département
+          Coworker(s) actif(s) in the department
         </Typography>
       </Box>
     </Paper>

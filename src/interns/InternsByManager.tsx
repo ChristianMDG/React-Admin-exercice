@@ -23,7 +23,7 @@ const InternsByManager = () => {
     filter: { managerId: employee?.id },
     pagination: { page: 1, perPage: 100 },
     sort: { field: "id", order: "ASC" },
-    enabled: !!employee?.id && employee?.active === true, 
+    enabled: !!employee?.id && employee?.active === true,
   });
 
   if (!employee?.id) return null;
@@ -32,7 +32,7 @@ const InternsByManager = () => {
     return (
       <Paper sx={{ mt: 3, p: 2, bgcolor: "#fff3e0" }}>
         <Typography color="warning.main">
-          Ce manager est inactif, il ne peut pas encadrer de stagiaires.
+          This manager is inactive and cannot supervise interns.
         </Typography>
       </Paper>
     );
@@ -42,7 +42,7 @@ const InternsByManager = () => {
     return (
       <Box sx={{ mt: 3, display: "flex", alignItems: "center", gap: 2 }}>
         <CircularProgress size={24} />
-        <Typography>Chargement des stagiaires...</Typography>
+        <Typography>Loading interns...</Typography>
       </Box>
     );
   }
@@ -51,7 +51,7 @@ const InternsByManager = () => {
     <Paper sx={{ mt: 3, p: 2 }}>
       <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
         <PersonIcon color="primary" />
-        <Typography variant="h6">Stagiaires encadrés ({total || 0})</Typography>
+        <Typography variant="h6">Supervised Interns ({total || 0})</Typography>
       </Box>
       <Divider sx={{ mb: 2 }} />
 
@@ -72,7 +72,7 @@ const InternsByManager = () => {
               </Typography>
               {intern.isRemunerated && (
                 <Typography variant="body2" color="success.main" sx={{ ml: 1 }}>
-                  (Rémunéré: {intern.remuneration}€)
+                  (Remunerated: {intern.remuneration}€)
                 </Typography>
               )}
             </ListItem>
@@ -80,7 +80,7 @@ const InternsByManager = () => {
         </List>
       ) : (
         <Typography color="textSecondary" sx={{ py: 2 }}>
-          Aucun stagiaire encadré par {employee.first_name} {employee.last_name}
+          No interns supervised by {employee.firstname} {employee.lastname}
         </Typography>
       )}
     </Paper>

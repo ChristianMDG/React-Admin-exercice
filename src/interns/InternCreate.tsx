@@ -24,13 +24,13 @@ export const InternCreate = () => {
       <SimpleForm>
         <TextInput
           source="first_name"
-          label="Prénom"
+          label="First Name"
           validate={required()}
           fullWidth
         />
         <TextInput
           source="last_name"
-          label="Nom"
+          label="Last Name"
           validate={required()}
           fullWidth
         />
@@ -42,7 +42,7 @@ export const InternCreate = () => {
         />
         <SelectInput
           source="department"
-          label="Département"
+          label="Department"
           choices={departmentChoices}
           validate={required()}
           fullWidth
@@ -76,8 +76,8 @@ export const InternCreate = () => {
                 disabled={isLoading || !department}
                 helperText={
                   !department
-                    ? "Select the departement first"
-                    : "Managers actifs du même département"
+                    ? "Select the department first"
+                    : "Active managers in the same department"
                 }
                 fullWidth
               />
@@ -85,7 +85,7 @@ export const InternCreate = () => {
           }}
         </FormDataConsumer>
 
-        <BooleanInput source="isRemunerated" label="Stagiaire rémunéré ?" />
+        <BooleanInput source="isRemunerated" label="Remunerated Intern?" />
 
         <FormDataConsumer>
           {({ formData }) => {
@@ -93,7 +93,7 @@ export const InternCreate = () => {
 
             const validateRemuneration = (value: number) => {
               if (isRemunerated && !value) {
-                return "La rémunération est obligatoire pour un stagiaire rémunéré";
+                return "Remuneration is required for a remunerated intern";
               }
               return undefined;
             };
@@ -101,7 +101,7 @@ export const InternCreate = () => {
             return isRemunerated ? (
               <NumberInput
                 source="remuneration"
-                label="Rémunération (€)"
+                label="Remuneration (€)"
                 validate={validateRemuneration}
                 min={0}
                 fullWidth

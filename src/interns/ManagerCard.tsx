@@ -31,7 +31,7 @@ const ManagerCard = () => {
       <Card sx={{ mt: 2, bgcolor: "#b88533" }}>
         <CardContent>
           <Typography color="textSecondary">
-            Aucun manager assigné à ce stagiaire
+            No manager assigned to this intern
           </Typography>
         </CardContent>
       </Card>
@@ -44,7 +44,7 @@ const ManagerCard = () => {
         <CardContent>
           <Box display="flex" alignItems="center" gap={2}>
             <CircularProgress size={24} />
-            <Typography>Chargement des informations du manager...</Typography>
+            <Typography>Loading manager information...</Typography>
           </Box>
         </CardContent>
       </Card>
@@ -55,9 +55,7 @@ const ManagerCard = () => {
     return (
       <Card sx={{ mt: 2 }}>
         <CardContent>
-          <Alert severity="error">
-            Erreur lors du chargement du manager : {error.message}
-          </Alert>
+          <Alert severity="error">Error loading manager: {error.message}</Alert>
         </CardContent>
       </Card>
     );
@@ -67,9 +65,7 @@ const ManagerCard = () => {
     return (
       <Card sx={{ mt: 2 }}>
         <CardContent>
-          <Alert severity="warning">
-            Manager introuvable (ID: {managerId})
-          </Alert>
+          <Alert severity="warning">Manager not found (ID: {managerId})</Alert>
         </CardContent>
       </Card>
     );
@@ -79,12 +75,12 @@ const ManagerCard = () => {
     <Card sx={{ mt: 2, bgcolor: "#5e9778" }}>
       <CardContent>
         <Typography variant="h6" gutterBottom color="primary">
-          Informations du manager
+          Manager Information
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
           <Typography>
-            <strong>Nom complet :</strong>{" "}
+            <strong>Full Name:</strong>{" "}
             <Link
               component={RouterLink}
               to={`/employees/${manager.id}/show`}
@@ -95,22 +91,22 @@ const ManagerCard = () => {
           </Typography>
 
           <Typography>
-            <strong>Département :</strong> {manager.department}
+            <strong>Department:</strong> {manager.department}
           </Typography>
 
           <Typography>
-            <strong>Email :</strong>{" "}
+            <strong>Email:</strong>{" "}
             <Link href={`mailto:${manager.email}`} underline="hover">
               {manager.email}
             </Link>
           </Typography>
 
           <Typography>
-            <strong>Statut :</strong>{" "}
+            <strong>Status:</strong>{" "}
             {manager.active ? (
-              <span style={{ color: "green", fontWeight: "bold" }}>Actif</span>
+              <span style={{ color: "green", fontWeight: "bold" }}>Active</span>
             ) : (
-              <span style={{ color: "red", fontWeight: "bold" }}>Inactif</span>
+              <span style={{ color: "red", fontWeight: "bold" }}>Inactive</span>
             )}
           </Typography>
         </Box>

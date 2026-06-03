@@ -20,10 +20,10 @@ const departmentChoices = [
 
 const EmployeeTitle = () => {
   const record = useRecordContext();
-  if (!record) return <span>Modifier un employé</span>;
+  if (!record) return <span>Edit Employee</span>;
   return (
     <span>
-      Modify : {record.firstname} {record.lastname}
+      Edit: {record.firstname} {record.lastname}
     </span>
   );
 };
@@ -51,7 +51,7 @@ export const EmployeeEdit = () => (
       />
       <SelectInput
         source="department"
-        label="DDepartment"
+        label="Department"
         choices={departmentChoices}
         validate={required("The department is required")}
       />
@@ -60,7 +60,7 @@ export const EmployeeEdit = () => (
         label="Salary (€)"
         validate={[
           required("The salary is required"),
-          minValue(1500, "The minimum salary is 1 500 €"),
+          minValue(1500, "The minimum salary is 1,500 €"),
         ]}
       />
       <BooleanInput source="active" label="Active" />

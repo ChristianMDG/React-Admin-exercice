@@ -12,10 +12,10 @@ import ManagerCard from "./ManagerCard";
 export const InternShow = () => (
   <Show>
     <SimpleShowLayout>
-      <TextField source="first_name" label="Prénom" />
-      <TextField source="last_name" label="Nom" />
+      <TextField source="first_name" label="First Name" />
+      <TextField source="last_name" label="Last Name" />
       <EmailField source="email" label="Email" />
-      <TextField source="department" label="Département" />
+      <TextField source="department" label="Department" />
 
       <ReferenceField
         source="managerId"
@@ -26,10 +26,10 @@ export const InternShow = () => (
         <TextField source="firstname" /> <TextField source="lastname" />
       </ReferenceField>
 
-      <BooleanField source="isRemunerated" label="Rémunéré ?" />
+      <BooleanField source="isRemunerated" label="Remunerated?" />
       <NumberField
         source="remuneration"
-        label="Rémunération"
+        label="Remuneration"
         options={{ style: "currency", currency: "EUR" }}
       />
 

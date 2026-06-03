@@ -26,10 +26,10 @@ export default function InternList() {
           <TextField source="firstname" />
           <TextField source="lastname" />
         </ReferenceField>
-        <BooleanField source="isRemunerated" label="Rémunéré ?" />
+        <BooleanField source="isRemunerated" label="Remunerated?" />
         <NumberField
           source="remuneration"
-          label="Rémunération"
+          label="Remuneration"
           options={{ style: "currency", currency: "EUR" }}
         />
         <EditButton />
