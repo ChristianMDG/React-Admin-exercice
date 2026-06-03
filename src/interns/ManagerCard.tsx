@@ -1,4 +1,3 @@
-// interns/ManagerCard.tsx
 import { useRecordContext, useGetOne } from "react-admin";
 import {
   Card,
