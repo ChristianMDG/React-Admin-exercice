@@ -1,5 +1,10 @@
 import type { ReactNode } from "react";
-import { Layout as RALayout, CheckForApplicationUpdate, AppBar, Menu } from "react-admin";
+import {
+  Layout as RALayout,
+  CheckForApplicationUpdate,
+  AppBar,
+  Menu,
+} from "react-admin";
 import { Typography } from "@mui/material";
 
 const CustomAppBar = (props: any) => (
@@ -83,11 +88,13 @@ const CustomMenu = (props: any) => (
             color: "#EAEAFF",
           },
           "&.Mui-selected": {
-            background: "linear-gradient(135deg, rgba(83, 74, 183, 0.2), rgba(29, 158, 117, 0.1))",
+            background:
+              "linear-gradient(135deg, rgba(83, 74, 183, 0.2), rgba(29, 158, 117, 0.1))",
             color: "#534AB7",
             borderLeft: "2px solid #534AB7",
             "&:hover": {
-              background: "linear-gradient(135deg, rgba(83, 74, 183, 0.3), rgba(29, 158, 117, 0.15))",
+              background:
+                "linear-gradient(135deg, rgba(83, 74, 183, 0.3), rgba(29, 158, 117, 0.15))",
             },
           },
         },

@@ -165,7 +165,7 @@ export default function InternList() {
             }}
           >
             <Datagrid
-              rowClick="edit"
+              rowClick="show"
               sx={{
                 "& .MuiTableHead-root": {
                   "& .MuiTableCell-root": {
