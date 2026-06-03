@@ -11,6 +11,13 @@ import {
 } from "react-admin";
 import { useGetList } from "react-admin";
 
+const departmentChoices = [
+  { id: "Informatique", name: "Informatique" },
+  { id: "Marketing", name: "Marketing" },
+  { id: "RH", name: "RH" },
+  { id: "Finance", name: "Finance" },
+];
+
 export const InternCreate = () => {
   return (
     <Create>
@@ -33,9 +40,10 @@ export const InternCreate = () => {
           validate={[required(), email()]}
           fullWidth
         />
-        <TextInput
+        <SelectInput
           source="department"
           label="Département"
+          choices={departmentChoices}
           validate={required()}
           fullWidth
         />
@@ -56,7 +64,7 @@ export const InternCreate = () => {
             const managerChoices =
               managers?.map((m: any) => ({
                 id: m.id,
-                name: `${m.first_name} ${m.last_name}`,
+                name: `${m.firstname} ${m.lastname}`,
               })) || [];
 
             return (
@@ -64,10 +72,11 @@ export const InternCreate = () => {
                 source="managerId"
                 label="Manager"
                 choices={managerChoices}
+                validate={required()}
                 disabled={isLoading || !department}
                 helperText={
                   !department
-                    ? "Sélectionnez d'abord un département"
+                    ? "Select the departement first"
                     : "Managers actifs du même département"
                 }
                 fullWidth

@@ -65,6 +65,7 @@ export const InternEdit = () => {
                 source="managerId"
                 label="Manager"
                 choices={managerChoices}
+                validate={required()}
                 disabled={isLoading || !department}
                 helperText={
                   !department
