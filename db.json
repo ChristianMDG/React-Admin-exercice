@@ -16,7 +16,7 @@
       "email": "bob@company.com",
       "department": "Marketing",
       "salary": "2 500 €",
-      "active": false
+      "active": true
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "email": "clara@company.com",
       "department": "RH",
       "salary": "2 600 €",
-      "active": true
+      "active": false
     },
     {
       "active": false,

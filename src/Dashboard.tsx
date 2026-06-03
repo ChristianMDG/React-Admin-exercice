@@ -1,273 +1,413 @@
 import { useGetList } from "react-admin";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  CircularProgress,
-  Box,
-  LinearProgress,
-  Button,
-} from "@mui/material";
-import PeopleIcon from "@mui/icons-material/People";
-import SchoolIcon from "@mui/icons-material/School";
-import PaidIcon from "@mui/icons-material/Paid";
-import GroupIcon from "@mui/icons-material/Group";
-import AddIcon from "@mui/icons-material/Add";
+
+const StatCard = ({
+  label,
+  value,
+  loading,
+  icon,
+  accent,
+  badge,
+  sub,
+}: {
+  label: string;
+  value: number | undefined;
+  loading: boolean;
+  icon: string;
+  accent: string;
+  badge: string;
+  sub: string;
+}) => (
+  <div
+    className="relative overflow-hidden rounded-xl p-4 flex flex-col gap-3"
+    style={{ background: "#0e0e1c", border: "1px solid #1e1e3a" }}
+  >
+    <div
+      className="absolute top-0 left-0 right-0 h-0.5 rounded-t-xl"
+      style={{ background: accent }}
+    />
+    <div className="flex items-center justify-between">
+      <div
+        className="w-8 h-8 rounded-lg flex items-center justify-center text-base"
+        style={{ background: accent + "22", color: accent }}
+      >
+        <i className={`ti ti-${icon}`} aria-hidden="true" />
+      </div>
+      <span
+        className="text-[10px] px-2 py-0.5 rounded-full"
+        style={{
+          background: accent + "15",
+          color: accent,
+          border: `1px solid ${accent}40`,
+          letterSpacing: "0.05em",
+        }}
+      >
+        {badge}
+      </span>
+    </div>
+    <div>
+      <p
+        className="text-[10px] uppercase mb-1"
+        style={{ color: "#444460", letterSpacing: "0.08em" }}
+      >
+        {label}
+      </p>
+      {loading ? (
+        <div
+          className="h-8 w-12 rounded animate-pulse"
+          style={{ background: "#1a1a2e" }}
+        />
+      ) : (
+        <p
+          className="text-3xl font-medium leading-none"
+          style={{ color: "#e0e0f0" }}
+        >
+          {value ?? 0}
+        </p>
+      )}
+      <p className="text-[11px] mt-1.5" style={{ color: "#333350" }}>
+        {sub}
+      </p>
+    </div>
+  </div>
+);
+
+const ProgressCard = ({
+  title,
+  icon,
+  rate,
+  accent,
+  left,
+  right,
+  leftColor,
+  rightColor,
+}: {
+  title: string;
+  icon: string;
+  rate: number;
+  accent: string;
+  left: { label: string; value: number };
+  right: { label: string; value: number };
+  leftColor: string;
+  rightColor: string;
+}) => (
+  <div
+    className="rounded-xl p-5"
+    style={{ background: "#0e0e1c", border: "1px solid #1e1e3a" }}
+  >
+    <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center gap-2" style={{ color: "#a0a0c0" }}>
+        <i
+          className={`ti ti-${icon} text-base`}
+          style={{ color: accent }}
+          aria-hidden="true"
+        />
+        <span
+          className="text-[13px] font-medium"
+          style={{ letterSpacing: "0.03em" }}
+        >
+          {title}
+        </span>
+      </div>
+      <span
+        className="text-xs px-2.5 py-0.5 rounded-full font-medium"
+        style={{
+          background: accent + "15",
+          color: accent,
+          border: `1px solid ${accent}40`,
+        }}
+      >
+        {rate.toFixed(1)}%
+      </span>
+    </div>
+
+    <div
+      className="w-full h-1 rounded-full overflow-hidden mb-5"
+      style={{ background: "#1a1a2e" }}
+    >
+      <div
+        className="h-full rounded-full transition-all duration-700"
+        style={{ width: `${Math.min(100, rate)}%`, background: accent }}
+      />
+    </div>
+
+    <div className="grid grid-cols-2 gap-2">
+      <div
+        className="rounded-lg p-3"
+        style={{ background: "#0a0a18", border: "1px solid #1a1a30" }}
+      >
+        <p
+          className="text-[10px] uppercase mb-1"
+          style={{ color: "#444460", letterSpacing: "0.07em" }}
+        >
+          {left.label}
+        </p>
+        <p className="text-xl font-medium" style={{ color: leftColor }}>
+          {left.value}
+        </p>
+      </div>
+      <div
+        className="rounded-lg p-3"
+        style={{ background: "#0a0a18", border: "1px solid #1a1a30" }}
+      >
+        <p
+          className="text-[10px] uppercase mb-1"
+          style={{ color: "#444460", letterSpacing: "0.07em" }}
+        >
+          {right.label}
+        </p>
+        <p className="text-xl font-medium" style={{ color: rightColor }}>
+          {right.value}
+        </p>
+      </div>
+    </div>
+  </div>
+);
 
 const Dashboard = () => {
   const { total: totalEmployees, isLoading: loadingTotalEmp } = useGetList(
     "employees",
-    {
-      pagination: { page: 1, perPage: 1 },
-    }
+    { pagination: { page: 1, perPage: 1 } },
   );
-
   const { total: activeEmployees, isLoading: loadingActiveEmp } = useGetList(
     "employees",
-    {
-      filter: { active: true },
-      pagination: { page: 1, perPage: 1 },
-    }
+    { filter: { active: true }, pagination: { page: 1, perPage: 1 } },
   );
-
   const { total: totalInterns, isLoading: loadingTotalInt } = useGetList(
     "interns",
-    {
-      pagination: { page: 1, perPage: 1 },
-    }
+    { pagination: { page: 1, perPage: 1 } },
   );
-
   const { total: remuneratedInterns, isLoading: loadingRemunerated } =
     useGetList("interns", {
       filter: { isRemunerated: true },
       pagination: { page: 1, perPage: 1 },
     });
 
-  const stats = [
-    {
-      title: "Total Employees",
-      value: totalEmployees,
-      loading: loadingTotalEmp,
-      icon: <PeopleIcon sx={{ fontSize: 40, color: "#1976d2" }} />,
-    },
-    {
-      title: "Active Employees",
-      value: activeEmployees,
-      loading: loadingActiveEmp,
-      icon: <GroupIcon sx={{ fontSize: 40, color: "#2e7d32" }} />,
-    },
-    {
-      title: "Total Interns",
-      value: totalInterns,
-      loading: loadingTotalInt,
-      icon: <SchoolIcon sx={{ fontSize: 40, color: "#ed6c02" }} />,
-    },
-    {
-      title: "Remunerated Interns",
-      value: remuneratedInterns,
-      loading: loadingRemunerated,
-      icon: <PaidIcon sx={{ fontSize: 40, color: "#9c27b0" }} />,
-    },
-  ];
-
-  // Calcul du taux d'activité
   const activityRate = totalEmployees
     ? ((activeEmployees || 0) / (totalEmployees || 1)) * 100
     : 0;
-
-  // Calcul du taux de rémunération des stagiaires
   const remunerationRate = totalInterns
     ? ((remuneratedInterns || 0) / (totalInterns || 1)) * 100
     : 0;
 
   return (
-    <Box sx={{ p: 3 }}>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          mb: 3,
-          flexWrap: "wrap",
-          gap: 2,
-        }}
-      >
-        <Typography variant="h4">Dashboard</Typography>
-        <Box sx={{ display: "flex", gap: 2 }}>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<AddIcon />}
+    <div className="min-h-screen p-6" style={{ background: "#0a0a12" }}>
+      {/* Header */}
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-5">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <div
+              className="w-2 h-2 rounded-full"
+              style={{ background: "#534AB7" }}
+            />
+            <div
+              className="w-2 h-2 rounded-full"
+              style={{ background: "#1D9E75" }}
+            />
+            <span
+              className="text-[10px] uppercase"
+              style={{ color: "#534AB7", letterSpacing: "0.15em" }}
+            >
+              HR Command Center
+            </span>
+          </div>
+          <h1
+            className="text-lg font-medium"
+            style={{ color: "#e8e8f4", letterSpacing: "0.02em" }}
+          >
+            Workforce intelligence
+          </h1>
+        </div>
+        <div className="flex gap-2">
+          <a
             href="#/employees/create"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium no-underline transition-opacity hover:opacity-80"
+            style={{
+              background: "#1a1630",
+              border: "1px solid #534AB7",
+              color: "#AFA9EC",
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+            }}
           >
-            Add Employee
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<AddIcon />}
+            <i className="ti ti-user-plus" aria-hidden="true" /> New employee
+          </a>
+          <a
             href="#/interns/create"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium no-underline transition-opacity hover:opacity-80"
+            style={{
+              background: "#0a1a14",
+              border: "1px solid #1D9E75",
+              color: "#5DCAA5",
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+            }}
           >
-            Add Intern
-          </Button>
-        </Box>
-      </Box>
+            <i className="ti ti-school" aria-hidden="true" /> New intern
+          </a>
+        </div>
+      </div>
 
-      {/* Statistiques Cards */}
-      <Grid container spacing={3} sx={{ mb: 4 }}>
-        {stats.map((stat, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card>
-              <CardContent>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <Box>
-                    <Typography
-                      color="textSecondary"
-                      gutterBottom
-                      variant="subtitle2"
-                    >
-                      {stat.title}
-                    </Typography>
-                    <Typography variant="h3" component="h2">
-                      {stat.loading ? (
-                        <CircularProgress size={30} />
-                      ) : (
-                        stat.value ?? 0
-                      )}
-                    </Typography>
-                  </Box>
-                  <Box>{stat.icon}</Box>
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
+      {/* Status ticker */}
+      <div
+        className="flex items-center gap-4 px-3 py-2 rounded-lg mb-5 flex-wrap"
+        style={{ background: "#0e0e1c", border: "1px solid #1e1e3a" }}
+      >
+        <span
+          className="text-[10px] uppercase flex-shrink-0"
+          style={{ color: "#534AB7", letterSpacing: "0.12em" }}
+        >
+          Live
+        </span>
+        {[
+          { dot: "#534AB7", text: "System nominal" },
+          { dot: "#1D9E75", text: "Data synced" },
+          { dot: "#BA7517", text: "Last update: today" },
+        ].map((item) => (
+          <span
+            key={item.text}
+            className="text-[11px] flex items-center gap-1.5"
+            style={{ color: "#555570" }}
+          >
+            <span
+              className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+              style={{ background: item.dot }}
+            />
+            {item.text}
+          </span>
         ))}
-      </Grid>
+      </div>
 
-      {/* Section Analytics */}
-      <Grid container spacing={3}>
-        {/* Activity Rate Card */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Employee Activity Rate
-              </Typography>
-              <Box sx={{ width: "100%" }}>
-                <Box
-                  sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
-                >
-                  <Typography variant="body2" color="textSecondary">
-                    Active Rate
-                  </Typography>
-                  <Typography variant="body2" fontWeight="medium">
-                    {activityRate.toFixed(1)}%
-                  </Typography>
-                </Box>
-                <LinearProgress
-                  variant="determinate"
-                  value={activityRate}
-                  sx={{ height: 8, borderRadius: 4 }}
-                />
-              </Box>
+      {/* Stat cards */}
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 mb-4">
+        <StatCard
+          label="Total employees"
+          value={totalEmployees}
+          loading={loadingTotalEmp}
+          icon="users"
+          accent="#534AB7"
+          badge="+2 this month"
+          sub="Across all departments"
+        />
+        <StatCard
+          label="Active employees"
+          value={activeEmployees}
+          loading={loadingActiveEmp}
+          icon="user-check"
+          accent="#1D9E75"
+          badge="Active"
+          sub="Currently on-board"
+        />
+        <StatCard
+          label="Total interns"
+          value={totalInterns}
+          loading={loadingTotalInt}
+          icon="school"
+          accent="#BA7517"
+          badge="Interns"
+          sub="All programs"
+        />
+        <StatCard
+          label="Remunerated"
+          value={remuneratedInterns}
+          loading={loadingRemunerated}
+          icon="coin"
+          accent="#D85A30"
+          badge="Paid"
+          sub="Stipend active"
+        />
+      </div>
 
-              <Box sx={{ mt: 3 }}>
-                <Typography variant="body2" color="textSecondary" gutterBottom>
-                  Total workforce distribution
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Box>
-                    <Typography variant="caption" color="textSecondary">
-                      Active
-                    </Typography>
-                    <Typography variant="h6">{activeEmployees ?? 0}</Typography>
-                  </Box>
-                  <Box>
-                    <Typography variant="caption" color="textSecondary">
-                      Inactive
-                    </Typography>
-                    <Typography variant="h6">
-                      {(totalEmployees ?? 0) - (activeEmployees ?? 0)}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
+      {/* Progress cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <ProgressCard
+          title="Employee activity"
+          icon="chart-bar"
+          rate={activityRate}
+          accent="#534AB7"
+          left={{ label: "Active", value: activeEmployees ?? 0 }}
+          right={{
+            label: "Inactive",
+            value: (totalEmployees ?? 0) - (activeEmployees ?? 0),
+          }}
+          leftColor="#1D9E75"
+          rightColor="#D85A30"
+        />
+        <ProgressCard
+          title="Internship program"
+          icon="report-money"
+          rate={remunerationRate}
+          accent="#1D9E75"
+          left={{ label: "Remunerated", value: remuneratedInterns ?? 0 }}
+          right={{
+            label: "Non-remunerated",
+            value: (totalInterns ?? 0) - (remuneratedInterns ?? 0),
+          }}
+          leftColor="#1D9E75"
+          rightColor="#5F5E5A"
+        />
+      </div>
 
-        {/* Internship Rate Card */}
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Internship Program
-              </Typography>
-              <Box sx={{ width: "100%" }}>
-                <Box
-                  sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
-                >
-                  <Typography variant="body2" color="textSecondary">
-                    Remuneration Rate
-                  </Typography>
-                  <Typography variant="body2" fontWeight="medium">
-                    {remunerationRate.toFixed(1)}%
-                  </Typography>
-                </Box>
-                <LinearProgress
-                  variant="determinate"
-                  value={remunerationRate}
-                  sx={{ height: 8, borderRadius: 4 }}
-                />
-              </Box>
-
-              <Box sx={{ mt: 3 }}>
-                <Typography variant="body2" color="textSecondary" gutterBottom>
-                  Intern distribution
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Box>
-                    <Typography variant="caption" color="textSecondary">
-                      Remunerated
-                    </Typography>
-                    <Typography variant="h6">
-                      {remuneratedInterns ?? 0}
-                    </Typography>
-                  </Box>
-                  <Box>
-                    <Typography variant="caption" color="textSecondary">
-                      Non-remunerated
-                    </Typography>
-                    <Typography variant="h6">
-                      {(totalInterns ?? 0) - (remuneratedInterns ?? 0)}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-    </Box>
+      {/* Quick links */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {[
+          {
+            href: "#/employees",
+            icon: "users",
+            accent: "#534AB7",
+            bg: "#1a1630",
+            title: "Manage employees",
+            sub: "View, edit and manage your team",
+          },
+          {
+            href: "#/interns",
+            icon: "school",
+            accent: "#1D9E75",
+            bg: "#0a1a14",
+            title: "Manage interns",
+            sub: "View, edit and manage internships",
+          },
+        ].map((lk) => (
+          <a
+            key={lk.href}
+            href={lk.href}
+            className="flex items-center justify-between rounded-xl p-4 no-underline transition-all"
+            style={{
+              background: "#0e0e1c",
+              border: "1px solid #1e1e3a",
+            }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLElement).style.borderColor =
+                lk.accent + "80")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLElement).style.borderColor = "#1e1e3a")
+            }
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center text-lg"
+                style={{ background: lk.bg, color: lk.accent }}
+              >
+                <i className={`ti ti-${lk.icon}`} aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-sm font-medium" style={{ color: "#c0c0dc" }}>
+                  {lk.title}
+                </p>
+                <p className="text-xs mt-0.5" style={{ color: "#444460" }}>
+                  {lk.sub}
+                </p>
+              </div>
+            </div>
+            <i
+              className="ti ti-arrow-right text-base"
+              style={{ color: "#333350" }}
+              aria-hidden="true"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
   );
 };
 
