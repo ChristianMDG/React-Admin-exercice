@@ -8,6 +8,7 @@ import {
   SearchInput,
   TextInput,
 } from "react-admin";
+import QuickStatusToggle from "./QuickStatusToggle";
 
 const choices = [
   { id: "informatique", name: "Informatique" },
@@ -34,6 +35,7 @@ export const EmployeeList = () => (
         options={{ style: "currency", currency: "EUR" }}
       />
       <BooleanField source="active" label="Active" />
+      <QuickStatusToggle label="Toggle Status" />
     </Datagrid>
   </List>
 );
