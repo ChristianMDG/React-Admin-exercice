@@ -1,9 +1,5 @@
 import {
   Show,
-  TextField,
-  NumberField,
-  BooleanField,
-  EmailField,
   TopToolbar,
   ListButton,
   EditButton,

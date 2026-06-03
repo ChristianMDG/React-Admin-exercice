@@ -1,6 +1,5 @@
 import { useCreate, useNotify, useRefresh, useGetList } from "react-admin";
 import { SimpleForm, TextInput, SelectInput, required } from "react-admin";
-import { useState } from "react";
 
 const QuickInternCreate = ({
   onSuccess,

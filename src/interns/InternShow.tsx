@@ -1,12 +1,4 @@
-import {
-  Show,
-  TextField,
-  EmailField,
-  BooleanField,
-  NumberField,
-  ReferenceField,
-  useRecordContext,
-} from "react-admin";
+import { Show, TextField, ReferenceField, useRecordContext } from "react-admin";
 import ManagerCard from "./ManagerCard";
 
 const InternDetail = () => {

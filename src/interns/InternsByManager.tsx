@@ -1,12 +1,5 @@
 import { useRecordContext, useGetList } from "react-admin";
-import {
-  Typography,
-  List,
-  ListItem,
-  Link,
-  CircularProgress,
-  Box,
-} from "@mui/material";
+import { Typography, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 const InternsByManager = () => {
