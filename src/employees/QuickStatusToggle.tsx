@@ -1,48 +1,40 @@
-// employees/QuickStatusToggle.tsx
 import {
   useRecordContext,
   useUpdate,
   useNotify,
   useRefresh,
 } from "react-admin";
-import { Button, CircularProgress } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
+import { Button } from "@mui/material";
 
 const QuickStatusToggle = () => {
   const record = useRecordContext();
-
   const notify = useNotify();
   const refresh = useRefresh();
-
   const [update, { isLoading }] = useUpdate();
 
   if (!record) return null;
 
-  const handleToggle = () => {
+  const handleToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+
     update(
-      "employees", // Ressource
+      "employees",
       {
         id: record.id,
         data: {
+          ...record,
           active: !record.active,
         },
         previousData: record,
       },
       {
         onSuccess: () => {
-          notify(
-            `Employé ${record.first_name} ${record.last_name} ${
-              record.active ? "désactivé" : "activé"
-            } avec succès`,
-            { type: "success" },
-          );
+          notify(`Status changed successfully`, { type: "success" });
           refresh();
         },
-        onError: (error) => {
-          notify(`Erreur lors de la modification : ${error.message}`, {
-            type: "error",
-          });
+        onError: () => {
+          notify(`Error changing status`, { type: "error" });
         },
       },
     );
@@ -55,24 +47,8 @@ const QuickStatusToggle = () => {
       onClick={handleToggle}
       disabled={isLoading}
       size="small"
-      startIcon={
-        isLoading ? (
-          <CircularProgress size={16} color="inherit" />
-        ) : record.active ? (
-          <CancelIcon />
-        ) : (
-          <CheckCircleIcon />
-        )
-      }
-      sx={{
-        minWidth: 100,
-        transition: "all 0.3s ease",
-        "&:hover": {
-          transform: "scale(1.02)",
-        },
-      }}
     >
-      {isLoading ? "Chargement..." : record.active ? "Désactiver" : "Activer"}
+      {isLoading ? "..." : record.active ? "Deactivate" : "Activate"}
     </Button>
   );
 };

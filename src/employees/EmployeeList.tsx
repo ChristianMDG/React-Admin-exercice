@@ -7,6 +7,8 @@ import {
   SelectInput,
   SearchInput,
   TextInput,
+  EditButton,
+  DeleteButton,
 } from "react-admin";
 import QuickStatusToggle from "./QuickStatusToggle";
 
@@ -36,6 +38,8 @@ export const EmployeeList = () => (
       />
       <BooleanField source="active" label="Active" />
       <QuickStatusToggle label="Toggle Status" />
+      <EditButton />
+      <DeleteButton mutationMode="pessimistic" />
     </Datagrid>
   </List>
 );

@@ -16,7 +16,7 @@
       "email": "bob@company.com",
       "department": "Marketing",
       "salary": "2 500 €",
-      "active": true
+      "active": false
     },
     {
       "id": 3,
@@ -28,16 +28,7 @@
       "active": false
     },
     {
-      "firstname": "Chris",
-      "lastname": "Ravelo",
-      "email": "chris@gmail.com",
-      "department": "Marketing",
-      "salary": 5000,
-      "active": true,
-      "id": 5
-    },
-    {
-      "active": true,
+      "active": false,
       "firstname": "Antonio",
       "lastname": "Ratolojah",
       "email": "Antonio@gmail.com",
