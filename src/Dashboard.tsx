@@ -249,36 +249,14 @@ const Dashboard = () => {
               <i className="ti ti-chart-infographic text-white text-base" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <div className="flex gap-1">
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ background: "#534AB7" }}
-                  />
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ background: "#1D9E75" }}
-                  />
-                  <div
-                    className="w-2 h-2 rounded-full"
-                    style={{ background: "#D85A30" }}
-                  />
-                </div>
-                <span
-                  className="text-[10px] font-mono tracking-[0.15em]"
-                  style={{ color: "#534AB7" }}
-                >
-                  HR COMMAND CENTER
-                </span>
-              </div>
               <h1
                 className="text-2xl font-bold tracking-tight mt-1"
                 style={{ color: "#EAEAFF" }}
               >
-                Workforce Intelligence
+                I-Kiandra
               </h1>
               <p className="text-sm mt-0.5" style={{ color: "#5A5A7A" }}>
-                Real-time analytics & insights
+                Management system for work
               </p>
             </div>
           </div>

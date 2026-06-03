@@ -18,92 +18,75 @@ const departmentChoices = [
   { id: "Finance", name: "Finance" },
 ];
 
-const futuristic = {
-  page: { background: "#0a0a12", minHeight: "100vh", padding: "2rem" },
-  card: {
-    background: "#0e0e1c",
-    border: "1px solid #1e1e3a",
-    borderRadius: "16px",
-    padding: "2rem",
-    maxWidth: "640px",
-    margin: "0 auto",
-  },
-  header: {
-    borderBottom: "1px solid #1e1e3a",
-    paddingBottom: "1.25rem",
-    marginBottom: "1.75rem",
-  },
-  label: {
-    fontSize: "10px",
-    letterSpacing: "0.12em",
-    textTransform: "uppercase" as const,
-    color: "#534AB7",
-    marginBottom: "4px",
-    display: "block",
-  },
-  accentBar: {
-    width: "32px",
-    height: "2px",
-    background: "#534AB7",
-    borderRadius: "2px",
-    marginBottom: "10px",
-  },
-  title: {
-    fontSize: "18px",
-    fontWeight: 500,
-    color: "#e8e8f4",
-    letterSpacing: "0.02em",
-  },
-  sub: { fontSize: "12px", color: "#444460", marginTop: "4px" },
-  section: {
-    background: "#0a0a18",
-    border: "1px solid #1a1a30",
-    borderRadius: "10px",
-    padding: "1.25rem",
-    marginBottom: "1rem",
-  },
-  sectionTitle: {
-    fontSize: "10px",
-    letterSpacing: "0.1em",
-    textTransform: "uppercase" as const,
-    color: "#333350",
-    marginBottom: "1rem",
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-  },
-  dot: {
-    width: "5px",
-    height: "5px",
-    borderRadius: "50%",
-    background: "#534AB7",
-    display: "inline-block",
-  },
-} as const;
-
 export const InternCreate = () => {
   return (
-    <div style={futuristic.page}>
-      <div style={futuristic.card}>
-        {/* Card header */}
-        <div style={futuristic.header}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              marginBottom: "6px",
-            }}
-          >
-            <span style={{ ...futuristic.dot }} />
-            <span style={{ ...futuristic.label, marginBottom: 0 }}>
-              HR System
-            </span>
+    <div
+      className="p-8"
+      style={{
+        background: "#06060C",
+        minHeight: "100vh",
+      }}
+    >
+      <div
+        className="relative overflow-hidden rounded-xl"
+        style={{
+          background: "#0B0B14",
+          border: "1px solid rgba(83, 74, 183, 0.15)",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+        }}
+      >
+        <div className="p-6 pb-4">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "linear-gradient(135deg, #534AB7, #1D9E75)",
+              }}
+            >
+              <i className="ti ti-school text-white text-lg" />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{ background: "#534AB7" }}
+                  />
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{ background: "#1D9E75" }}
+                  />
+                  <div
+                    className="w-2 h-2 rounded-full"
+                    style={{ background: "#D85A30" }}
+                  />
+                </div>
+                <span
+                  className="text-[10px] font-mono tracking-[0.15em]"
+                  style={{ color: "#534AB7" }}
+                >
+                  HR SYSTEM
+                </span>
+              </div>
+              <h1
+                className="text-xl font-bold tracking-tight mt-1"
+                style={{ color: "#EAEAFF" }}
+              >
+                New Intern Registration
+              </h1>
+              <p className="text-xs mt-0.5" style={{ color: "#5A5A7A" }}>
+                Fill in the intern's information below
+              </p>
+            </div>
           </div>
-          <div style={futuristic.accentBar} />
-          <h1 style={futuristic.title}>New intern registration</h1>
-          <p style={futuristic.sub}>Fill in the intern's information below</p>
         </div>
+
+        <div
+          style={{
+            height: "2px",
+            background: "linear-gradient(90deg, #534AB7, #1D9E75, #534AB7)",
+          }}
+        />
 
         <Create
           title=" "
@@ -121,153 +104,258 @@ export const InternCreate = () => {
         >
           <SimpleForm
             sx={{
-              padding: 0,
+              padding: "24px",
               "& .MuiFormControl-root": {
-                "& label": { color: "#555570", fontSize: "13px" },
-                "& label.Mui-focused": { color: "#7F77DD" },
+                marginBottom: "16px",
+                "& label": {
+                  color: "#5A5A7A",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  marginBottom: "4px",
+                },
+                "& label.Mui-focused": { color: "#534AB7" },
                 "& .MuiOutlinedInput-root": {
-                  background: "#0a0a18",
+                  background: "#07070F",
                   borderRadius: "8px",
-                  color: "#e0e0f0",
-                  "& fieldset": { borderColor: "#1e1e3a", borderWidth: "1px" },
-                  "&:hover fieldset": { borderColor: "#3C3489" },
+                  color: "#EAEAFF",
+                  fontSize: "14px",
+                  "& fieldset": {
+                    borderColor: "rgba(83, 74, 183, 0.2)",
+                    borderWidth: "1px",
+                  },
+                  "&:hover fieldset": { borderColor: "#534AB7" },
                   "&.Mui-focused fieldset": {
                     borderColor: "#534AB7",
                     borderWidth: "1px",
                   },
                 },
+                "& .MuiInputBase-input": {
+                  padding: "10px 12px",
+                },
                 "& .MuiFormHelperText-root": {
-                  color: "#444460",
-                  fontSize: "11px",
+                  color: "#5A5A7A",
+                  fontSize: "10px",
+                  marginTop: "4px",
                 },
                 "& .MuiFormHelperText-root.Mui-error": { color: "#D85A30" },
               },
               "& .MuiSwitch-root": {
-                "& .MuiSwitch-track": { background: "#1e1e3a" },
+                marginTop: "8px",
+                "& .MuiSwitch-track": {
+                  background: "#151525",
+                  borderRadius: "12px",
+                },
                 "& .Mui-checked + .MuiSwitch-track": {
                   background: "#534AB780",
                 },
+                "& .MuiSwitch-thumb": {
+                  background: "#5A5A7A",
+                },
                 "& .Mui-checked .MuiSwitch-thumb": { background: "#534AB7" },
               },
-              "& .MuiFormLabel-root": { color: "#a0a0c0", fontSize: "14px" },
-              "& .MuiSelect-icon": { color: "#444460" },
+              "& .MuiFormLabel-root": {
+                color: "#D0D0EC",
+                fontSize: "13px",
+                fontWeight: 500,
+                marginBottom: "8px",
+              },
+              "& .MuiSelect-icon": { color: "#5A5A7A" },
               "& .MuiMenuItem-root": {
-                background: "#0e0e1c",
-                color: "#e0e0f0",
+                background: "#0B0B14",
+                color: "#EAEAFF",
+                "&:hover": {
+                  background: "#151525",
+                },
+              },
+              "& .MuiPaper-root": {
+                background: "#0B0B14",
+                border: "1px solid rgba(83, 74, 183, 0.2)",
               },
             }}
           >
-            {/* Identity section */}
-            <div style={futuristic.section}>
-              <div style={futuristic.sectionTitle}>
-                <span style={{ ...futuristic.dot, background: "#534AB7" }} />
-                Identity
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+              <div
+                className="rounded-lg p-4"
+                style={{
+                  background: "#07070F",
+                  border: "1px solid rgba(83, 74, 183, 0.1)",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <div
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ background: "#534AB7" }}
+                  />
+                  <span
+                    className="text-[9px] font-mono tracking-[0.15em]"
+                    style={{ color: "#534AB7" }}
+                  >
+                    SECTION 01
+                  </span>
+                  <div
+                    className="flex-1 h-px"
+                    style={{ background: "rgba(83, 74, 183, 0.15)" }}
+                  />
+                </div>
+                <h3
+                  className="text-sm font-semibold mb-3"
+                  style={{ color: "#D0D0EC" }}
+                >
+                  Identity
+                </h3>
+                <TextInput
+                  source="first_name"
+                  label="First Name"
+                  validate={required()}
+                  fullWidth
+                />
+                <TextInput
+                  source="last_name"
+                  label="Last Name"
+                  validate={required()}
+                  fullWidth
+                />
+                <TextInput
+                  source="email"
+                  label="Email"
+                  validate={[required(), email()]}
+                  fullWidth
+                />
               </div>
-              <TextInput
-                source="first_name"
-                label="First Name"
-                validate={required()}
-                fullWidth
-              />
-              <TextInput
-                source="last_name"
-                label="Last Name"
-                validate={required()}
-                fullWidth
-              />
-              <TextInput
-                source="email"
-                label="Email"
-                validate={[required(), email()]}
-                fullWidth
-              />
-            </div>
 
-            {/* Assignment section */}
-            <div style={futuristic.section}>
-              <div style={futuristic.sectionTitle}>
-                <span style={{ ...futuristic.dot, background: "#1D9E75" }} />
-                Assignment
+              <div
+                className="rounded-lg p-4"
+                style={{
+                  background: "#07070F",
+                  border: "1px solid rgba(83, 74, 183, 0.1)",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <div
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ background: "#1D9E75" }}
+                  />
+                  <span
+                    className="text-[9px] font-mono tracking-[0.15em]"
+                    style={{ color: "#1D9E75" }}
+                  >
+                    SECTION 02
+                  </span>
+                  <div
+                    className="flex-1 h-px"
+                    style={{ background: "rgba(29, 158, 117, 0.15)" }}
+                  />
+                </div>
+                <h3
+                  className="text-sm font-semibold mb-3"
+                  style={{ color: "#D0D0EC" }}
+                >
+                  Assignment
+                </h3>
+                <SelectInput
+                  source="department"
+                  label="Department"
+                  choices={departmentChoices}
+                  validate={required()}
+                  fullWidth
+                />
+
+                <FormDataConsumer>
+                  {({ formData }) => {
+                    const department = formData.department;
+                    const { data: managers, isLoading } = useGetList(
+                      "employees",
+                      {
+                        filter: { active: true, department },
+                        enabled: !!department,
+                        pagination: { page: 1, perPage: 100 },
+                      },
+                    );
+
+                    const managerChoices =
+                      managers?.map((m: any) => ({
+                        id: m.id,
+                        name: `${m.firstname} ${m.lastname}`,
+                      })) || [];
+
+                    return (
+                      <SelectInput
+                        source="managerId"
+                        label="Manager"
+                        choices={managerChoices}
+                        validate={required()}
+                        disabled={isLoading || !department}
+                        helperText={
+                          !department
+                            ? "Select the department first"
+                            : "Active managers in the same department"
+                        }
+                        fullWidth
+                      />
+                    );
+                  }}
+                </FormDataConsumer>
               </div>
-              <SelectInput
-                source="department"
-                label="Department"
-                choices={departmentChoices}
-                validate={required()}
-                fullWidth
-              />
 
-              <FormDataConsumer>
-                {({ formData }) => {
-                  const department = formData.department;
-                  // eslint-disable-next-line react-hooks/rules-of-hooks
-                  const { data: managers, isLoading } = useGetList(
-                    "employees",
-                    {
-                      filter: { active: true, department },
-                      enabled: !!department,
-                      pagination: { page: 1, perPage: 100 },
-                    },
-                  );
+              <div
+                className="rounded-lg p-4"
+                style={{
+                  background: "#07070F",
+                  border: "1px solid rgba(83, 74, 183, 0.1)",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <div
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ background: "#BA7517" }}
+                  />
+                  <span
+                    className="text-[9px] font-mono tracking-[0.15em]"
+                    style={{ color: "#BA7517" }}
+                  >
+                    SECTION 03
+                  </span>
+                  <div
+                    className="flex-1 h-px"
+                    style={{ background: "rgba(186, 117, 23, 0.15)" }}
+                  />
+                </div>
+                <h3
+                  className="text-sm font-semibold mb-3"
+                  style={{ color: "#D0D0EC" }}
+                >
+                  Remuneration
+                </h3>
+                <BooleanInput
+                  source="isRemunerated"
+                  label="Remunerated intern"
+                />
 
-                  const managerChoices =
-                    managers?.map((m: any) => ({
-                      id: m.id,
-                      name: `${m.firstname} ${m.lastname}`,
-                    })) || [];
+                <FormDataConsumer>
+                  {({ formData }) => {
+                    const isRemunerated = formData.isRemunerated;
 
-                  return (
-                    <SelectInput
-                      source="managerId"
-                      label="Manager"
-                      choices={managerChoices}
-                      validate={required()}
-                      disabled={isLoading || !department}
-                      helperText={
-                        !department
-                          ? "Select the department first"
-                          : "Active managers in the same department"
+                    const validateRemuneration = (value: number) => {
+                      if (isRemunerated && !value) {
+                        return "Remuneration is required";
                       }
-                      fullWidth
-                    />
-                  );
-                }}
-              </FormDataConsumer>
-            </div>
+                      return undefined;
+                    };
 
-            {/* Remuneration section */}
-            <div style={futuristic.section}>
-              <div style={futuristic.sectionTitle}>
-                <span style={{ ...futuristic.dot, background: "#BA7517" }} />
-                Remuneration
+                    return isRemunerated ? (
+                      <NumberInput
+                        source="remuneration"
+                        label="Remuneration (€)"
+                        validate={validateRemuneration}
+                        min={0}
+                        fullWidth
+                      />
+                    ) : null;
+                  }}
+                </FormDataConsumer>
               </div>
-              <BooleanInput
-                source="isRemunerated"
-                label="Remunerated intern?"
-              />
-
-              <FormDataConsumer>
-                {({ formData }) => {
-                  const isRemunerated = formData.isRemunerated;
-
-                  const validateRemuneration = (value: number) => {
-                    if (isRemunerated && !value) {
-                      return "Remuneration is required for a remunerated intern";
-                    }
-                    return undefined;
-                  };
-
-                  return isRemunerated ? (
-                    <NumberInput
-                      source="remuneration"
-                      label="Remuneration (€)"
-                      validate={validateRemuneration}
-                      min={0}
-                      fullWidth
-                    />
-                  ) : null;
-                }}
-              </FormDataConsumer>
             </div>
           </SimpleForm>
         </Create>
