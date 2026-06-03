@@ -68,16 +68,6 @@
       "remuneration": 1150
     },
     {
-      "id": 4,
-      "first_name": "David",
-      "last_name": "Roux",
-      "email": "david.roux@intern.com",
-      "department": "Marketing",
-      "managerId": 2,
-      "isRemunerated": true,
-      "remuneration": 1100
-    },
-    {
       "id": 5,
       "first_name": "Emma",
       "last_name": "Petit",
