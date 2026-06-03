@@ -19,9 +19,10 @@ const departmentChoices = [
 
 export const EmployeeCreate = () => (
   <div
-    className="min-h-screen p-8"
+    className="p-8"
     style={{
       background: "#06060C",
+      minHeight: "100vh",
     }}
   >
     <div
@@ -30,22 +31,20 @@ export const EmployeeCreate = () => (
         background: "#0B0B14",
         border: "1px solid rgba(83, 74, 183, 0.15)",
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
-        maxWidth: "720px",
-        margin: "0 auto",
       }}
     >
-      <div className="p-6">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="p-6 pb-4">
+        <div className="flex items-center gap-3">
           <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center"
+            className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
             style={{
               background: "linear-gradient(135deg, #534AB7, #1D9E75)",
             }}
           >
-            <i className="ti ti-user-plus text-white text-xl" />
+            <i className="ti ti-user-plus text-white text-lg" />
           </div>
-          <div>
-            <div className="flex items-center gap-2 mb-1">
+          <div className="flex-1">
+            <div className="flex items-center gap-2">
               <div className="flex gap-1">
                 <div
                   className="w-2 h-2 rounded-full"
@@ -68,129 +67,128 @@ export const EmployeeCreate = () => (
               </span>
             </div>
             <h1
-              className="text-2xl font-bold tracking-tight"
+              className="text-xl font-bold tracking-tight mt-1"
               style={{ color: "#EAEAFF" }}
             >
               New Employee Registration
             </h1>
-            <p className="text-sm mt-0.5" style={{ color: "#5A5A7A" }}>
-              Create a new employee profile
+            <p className="text-xs mt-0.5" style={{ color: "#5A5A7A" }}>
+              Fill in the employee's information below
             </p>
           </div>
         </div>
-
-        <div
-          className="h-px mb-6"
-          style={{
-            background:
-              "linear-gradient(90deg, #534AB7, #1D9E75, #D85A30, transparent)",
-          }}
-        />
       </div>
 
-      <div className="px-6 pb-6">
-        <Create
-          title=" "
-          redirect="list"
+      <div
+        style={{
+          height: "2px",
+          background: "linear-gradient(90deg, #534AB7, #1D9E75, #534AB7)",
+        }}
+      />
+
+      <Create
+        title=" "
+        redirect="list"
+        sx={{
+          "& .RaCreate-main": {
+            boxShadow: "none",
+            background: "transparent",
+          },
+          "& .RaCreate-card": {
+            boxShadow: "none",
+            background: "transparent",
+            padding: 0,
+          },
+        }}
+      >
+        <SimpleForm
           sx={{
-            "& .RaCreate-main": {
-              boxShadow: "none",
-              background: "transparent",
+            padding: "24px",
+            "& .MuiFormControl-root": {
+              marginBottom: "16px",
+              "& label": {
+                color: "#5A5A7A",
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginBottom: "4px",
+              },
+              "& label.Mui-focused": { color: "#534AB7" },
+              "& .MuiOutlinedInput-root": {
+                background: "#07070F",
+                borderRadius: "8px",
+                color: "#EAEAFF",
+                fontSize: "14px",
+                "& fieldset": {
+                  borderColor: "rgba(83, 74, 183, 0.2)",
+                  borderWidth: "1px",
+                },
+                "&:hover fieldset": { borderColor: "#534AB7" },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#534AB7",
+                  borderWidth: "1px",
+                },
+              },
+              "& .MuiInputBase-input": {
+                padding: "10px 12px",
+              },
+              "& .MuiFormHelperText-root": {
+                color: "#5A5A7A",
+                fontSize: "10px",
+                marginTop: "4px",
+              },
+              "& .MuiFormHelperText-root.Mui-error": { color: "#D85A30" },
             },
-            "& .RaCreate-card": {
-              boxShadow: "none",
-              background: "transparent",
-              padding: 0,
+            "& .MuiSwitch-root": {
+              marginTop: "8px",
+              "& .MuiSwitch-track": {
+                background: "#151525",
+                borderRadius: "12px",
+              },
+              "& .Mui-checked + .MuiSwitch-track": {
+                background: "#534AB780",
+              },
+              "& .MuiSwitch-thumb": {
+                background: "#5A5A7A",
+              },
+              "& .Mui-checked .MuiSwitch-thumb": { background: "#534AB7" },
+            },
+            "& .MuiFormLabel-root": {
+              color: "#D0D0EC",
+              fontSize: "13px",
+              fontWeight: 500,
+              marginBottom: "8px",
+            },
+            "& .MuiSelect-icon": { color: "#5A5A7A" },
+            "& .MuiMenuItem-root": {
+              background: "#0B0B14",
+              color: "#EAEAFF",
+              "&:hover": {
+                background: "#151525",
+              },
+            },
+            "& .MuiPaper-root": {
+              background: "#0B0B14",
+              border: "1px solid rgba(83, 74, 183, 0.2)",
             },
           }}
         >
-          <SimpleForm
-            sx={{
-              "& .MuiFormControl-root": {
-                marginBottom: "20px",
-                "& label": {
-                  color: "#5A5A7A",
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  marginBottom: "4px",
-                },
-                "& label.Mui-focused": { color: "#534AB7" },
-                "& .MuiOutlinedInput-root": {
-                  background: "#07070F",
-                  borderRadius: "10px",
-                  color: "#EAEAFF",
-                  fontSize: "14px",
-                  "& fieldset": {
-                    borderColor: "rgba(83, 74, 183, 0.2)",
-                    borderWidth: "1px",
-                  },
-                  "&:hover fieldset": { borderColor: "#534AB7" },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#534AB7",
-                    borderWidth: "1px",
-                    boxShadow: "0 0 0 2px rgba(83, 74, 183, 0.1)",
-                  },
-                },
-                "& .MuiInputBase-input": {
-                  padding: "12px 14px",
-                },
-                "& .MuiFormHelperText-root": {
-                  color: "#5A5A7A",
-                  fontSize: "10px",
-                  marginTop: "4px",
-                },
-                "& .MuiFormHelperText-root.Mui-error": { color: "#D85A30" },
-              },
-              "& .MuiSwitch-root": {
-                marginTop: "8px",
-                "& .MuiSwitch-track": {
-                  background: "#151525",
-                  borderRadius: "12px",
-                },
-                "& .Mui-checked + .MuiSwitch-track": {
-                  background: "#534AB780",
-                },
-                "& .MuiSwitch-thumb": {
-                  background: "#5A5A7A",
-                },
-                "& .Mui-checked .MuiSwitch-thumb": { background: "#534AB7" },
-              },
-              "& .MuiFormLabel-root": {
-                color: "#D0D0EC",
-                fontSize: "13px",
-                fontWeight: 500,
-                marginBottom: "8px",
-              },
-              "& .MuiSelect-icon": { color: "#5A5A7A" },
-              "& .MuiMenuItem-root": {
-                background: "#0B0B14",
-                color: "#EAEAFF",
-                "&:hover": {
-                  background: "#151525",
-                },
-              },
-              "& .MuiPaper-root": {
-                background: "#0B0B14",
-                border: "1px solid rgba(83, 74, 183, 0.2)",
-              },
-            }}
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
             <div
-              className="rounded-xl p-5 mb-5"
+              className="rounded-lg p-4"
               style={{
                 background: "#07070F",
                 border: "1px solid rgba(83, 74, 183, 0.1)",
               }}
             >
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-3">
                 <div
                   className="w-1.5 h-1.5 rounded-full"
                   style={{ background: "#534AB7" }}
                 />
                 <span
-                  className="text-[10px] font-mono tracking-[0.1em]"
+                  className="text-[9px] font-mono tracking-[0.15em]"
                   style={{ color: "#534AB7" }}
                 >
                   SECTION 01
@@ -201,25 +199,23 @@ export const EmployeeCreate = () => (
                 />
               </div>
               <h3
-                className="text-sm font-semibold mb-4"
+                className="text-sm font-semibold mb-3"
                 style={{ color: "#D0D0EC" }}
               >
                 Personal Information
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <TextInput
-                  source="firstname"
-                  label="First Name"
-                  validate={required("The first name is required")}
-                  fullWidth
-                />
-                <TextInput
-                  source="lastname"
-                  label="Last Name"
-                  validate={required("The last name is required")}
-                  fullWidth
-                />
-              </div>
+              <TextInput
+                source="firstname"
+                label="First Name"
+                validate={required("The first name is required")}
+                fullWidth
+              />
+              <TextInput
+                source="lastname"
+                label="Last Name"
+                validate={required("The last name is required")}
+                fullWidth
+              />
               <TextInput
                 source="email"
                 label="Email"
@@ -232,19 +228,19 @@ export const EmployeeCreate = () => (
             </div>
 
             <div
-              className="rounded-xl p-5 mb-5"
+              className="rounded-lg p-4"
               style={{
                 background: "#07070F",
                 border: "1px solid rgba(83, 74, 183, 0.1)",
               }}
             >
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-3">
                 <div
                   className="w-1.5 h-1.5 rounded-full"
                   style={{ background: "#1D9E75" }}
                 />
                 <span
-                  className="text-[10px] font-mono tracking-[0.1em]"
+                  className="text-[9px] font-mono tracking-[0.15em]"
                   style={{ color: "#1D9E75" }}
                 >
                   SECTION 02
@@ -255,7 +251,7 @@ export const EmployeeCreate = () => (
                 />
               </div>
               <h3
-                className="text-sm font-semibold mb-4"
+                className="text-sm font-semibold mb-3"
                 style={{ color: "#D0D0EC" }}
               >
                 Professional Information
@@ -279,19 +275,19 @@ export const EmployeeCreate = () => (
             </div>
 
             <div
-              className="rounded-xl p-5"
+              className="rounded-lg p-4"
               style={{
                 background: "#07070F",
                 border: "1px solid rgba(83, 74, 183, 0.1)",
               }}
             >
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-3">
                 <div
                   className="w-1.5 h-1.5 rounded-full"
                   style={{ background: "#BA7517" }}
                 />
                 <span
-                  className="text-[10px] font-mono tracking-[0.1em]"
+                  className="text-[9px] font-mono tracking-[0.15em]"
                   style={{ color: "#BA7517" }}
                 >
                   SECTION 03
@@ -302,16 +298,16 @@ export const EmployeeCreate = () => (
                 />
               </div>
               <h3
-                className="text-sm font-semibold mb-4"
+                className="text-sm font-semibold mb-3"
                 style={{ color: "#D0D0EC" }}
               >
                 Status
               </h3>
               <BooleanInput source="active" label="Active Employee" />
             </div>
-          </SimpleForm>
-        </Create>
-      </div>
+          </div>
+        </SimpleForm>
+      </Create>
     </div>
   </div>
 );
